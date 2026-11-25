@@ -264,6 +264,49 @@ impl Face {
         resp.on_hover_text(param.name())
     }
 
+    /// A bat-handle lever switch bound to a `BoolParam`: down-left = off, up-right = on.
+    pub fn lever(&self, ui: &mut Ui, setter: &ParamSetter, param: &BoolParam, x: f32, y: f32) -> Response {
+        let c = self.p(x, y);
+        let resp = ui.interact(Rect::from_center_size(c, Vec2::splat(self.s(28.0))), ui.id().with(param.name()), Sense::click());
+        if resp.clicked() {
+            setter.begin_set_parameter(param);
+            setter.set_parameter(param, !param.value());
+            setter.end_set_parameter(param);
+        }
+        let p = ui.painter();
+        shadow(p, c, self.s(11.0), self.scale);
+        p.circle(c, self.s(11.0), Color32::from_rgb(0x16, 0x18, 0x1b), Stroke::new(self.s(1.5), Color32::from_rgb(0x6c, 0x74, 0x7c)));
+        p.circle_filled(c, self.s(6.5), Color32::from_rgb(0xc8, 0xcf, 0xd6));
+        let tip = if param.value() { Vec2::new(7.0, -7.0) } else { Vec2::new(-7.0, 7.0) } * self.scale;
+        p.line_segment([c, c + tip], Stroke::new(self.s(4.0), Color32::from_rgb(0xee, 0xf2, 0xf6)));
+        p.circle_filled(c + tip, self.s(3.0), Color32::WHITE);
+        resp.on_hover_text(format!("{}: {}", param.name(), if param.value() { "on" } else { "off" }))
+    }
+
+    /// Interlocked push-buttons (one in at a time), e.g. COMP TIE OUT / 1 / 2, at `xs` along y.
+    #[allow(clippy::too_many_arguments)]
+    pub fn push_radio(&self, ui: &mut Ui, setter: &ParamSetter, params: &[&BoolParam], xs: &[f32], y: f32, size: Size, colour: Button) {
+        for (i, (param, x)) in params.iter().zip(xs).enumerate() {
+            let was = param.value();
+            if self.push(ui, setter, param, *x, y, size, colour).clicked() {
+                // the one pressed stays in; the others come out
+                if !was {
+                    for (j, other) in params.iter().enumerate() {
+                        if j != i && other.value() {
+                            setter.begin_set_parameter(*other);
+                            setter.set_parameter(*other, false);
+                            setter.end_set_parameter(*other);
+                        }
+                    }
+                } else {
+                    setter.begin_set_parameter(*param);
+                    setter.set_parameter(*param, true);
+                    setter.end_set_parameter(*param);
+                }
+            }
+        }
+    }
+
     /// A knob bound to any parameter. `scale` = (normalised position, legend) printed round it.
     /// Drag up / down to turn (Shift: fine), double-click for the default, scroll to nudge.
     #[allow(clippy::too_many_arguments)]
@@ -365,7 +408,8 @@ impl Face {
         let pos = |db: f32| {
             let lin = 10f32.powf(db / 20.0);
             let t = ((lin - 0.1) / (1.4125 - 0.1)).clamp(0.0, 1.0);
-            face.bottom() - t * face.height()
+            let m = self.s(9.0);
+            face.bottom() - m - t * (face.height() - 2.0 * m)
         };
         let mid = face.center().x;
         let ink_c = cc(0x2b, 0x23, 0x16);
@@ -375,7 +419,7 @@ impl Face {
             let y = pos(db);
             let col = if db >= 0.0 { red } else { ink_c };
             p.line_segment([Pos2::new(mid - self.s(6.0), y), Pos2::new(mid + self.s(1.0), y)], Stroke::new(self.s(1.2), col));
-            p.text(Pos2::new(mid - self.s(14.0), y), Align2::CENTER_CENTER, s, FontId::proportional(self.s(9.0)), col);
+            p.text(Pos2::new(mid - self.s(12.0), y), Align2::CENTER_CENTER, s, FontId::proportional(self.s(8.5)), col);
         }
         p.text(Pos2::new(mid + self.s(12.0), face.center().y), Align2::CENTER_CENTER, "VU", FontId::proportional(self.s(10.0)), ink_c);
         let ny = pos(vu);
