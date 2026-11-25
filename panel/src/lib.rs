@@ -154,15 +154,28 @@ pub struct Face {
     pub scale: f32,
     /// Module length in drawing units (702 on the rack drawing).
     pub len: f32,
+    /// Module width across, in drawing units (159 on the rack drawing).
+    pub width: f32,
 }
 
 impl Face {
     /// The face for a module of `len` drawing units, fitted to `rect` (upright).
     pub fn fit(rect: Rect, len: f32) -> Self {
-        let scale = (rect.width() / WIDTH).min(rect.height() / len);
-        let size = Vec2::new(WIDTH * scale, len * scale);
+        Self::fit_size(rect, WIDTH, len)
+    }
+
+    /// The face for a module `width` × `len` drawing units, fitted to `rect` (upright).
+    pub fn fit_size(rect: Rect, width: f32, len: f32) -> Self {
+        let scale = (rect.width() / width).min(rect.height() / len);
+        let size = Vec2::new(width * scale, len * scale);
         let origin = rect.center() - size / 2.0;
-        Face { origin, scale, len }
+        Face { origin, scale, len, width }
+    }
+
+    /// Drawing coordinates for a point given the other way: `across` from the left edge, `down` from
+    /// the top (the WBS badge end), as the VST suite's layouts (176 × 770) give them.
+    pub fn at(&self, across: f32, down: f32) -> (f32, f32) {
+        (self.len - down, across)
     }
 
     /// Screen point for drawing coordinates (x along the module, y across it).
@@ -176,7 +189,7 @@ impl Face {
     }
 
     pub fn rect(&self) -> Rect {
-        Rect::from_min_size(self.origin, Vec2::new(WIDTH * self.scale, self.len * self.scale))
+        Rect::from_min_size(self.origin, Vec2::new(self.width * self.scale, self.len * self.scale))
     }
 
     /// Anodised panel, silver trims down both long edges, thumb screws at both ends.
@@ -195,10 +208,11 @@ impl Face {
         gradient_rect(p, Rect::from_min_size(r.min, Vec2::new(w, r.height())), &trim, true);
         gradient_rect(p, Rect::from_min_size(Pos2::new(r.right() - w, r.top()), Vec2::new(w, r.height())), &trim, true);
         p.rect_stroke(r, 0.0, Stroke::new(1.0, ink::DARK), egui::StrokeKind::Inside);
-        self.screw(p, 19.0, 79.5);
-        self.screw(p, self.len - 19.0, 79.5);
-        self.text(p, self.len - 18.0, 46.0, "WBS", 13.0, ink::BRAND);
-        self.text(p, self.len - 18.0, 113.0, badge, 12.5, ink::LABEL);
+        let mid = self.width / 2.0;
+        self.screw(p, 19.0, mid);
+        self.screw(p, self.len - 19.0, mid);
+        self.text(p, self.len - 18.0, self.width * 0.29, "WBS", 13.0, ink::BRAND);
+        self.text(p, self.len - 18.0, self.width * 0.71, badge, 12.5, ink::LABEL);
     }
 
     pub fn screw(&self, p: &Painter, x: f32, y: f32) {
