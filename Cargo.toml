@@ -1,0 +1,6 @@
+# Copyright (c) 2026 Ward-Beck Systems (Ward-Beck.com - Ward-Beck.ca). All rights reserved.
+# Ward-Beck Plugin Core: what every Ward-Beck module plugin shares. Each module's plugin lives in its own
+# module repo (MODULES.<CATEGORY>.<Mxxx>/plugin) and depends on this.
+[workspace]
+members = ["panel"]
+resolver = "2"

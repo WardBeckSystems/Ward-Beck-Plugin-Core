@@ -1,0 +1,12 @@
+# Copyright (c) 2026 Ward-Beck Systems (Ward-Beck.com - Ward-Beck.ca). All rights reserved.
+[package]
+name = "wbs-panel"
+version = "0.1.0"
+edition = "2021"
+license = "LicenseRef-Ward-Beck"
+description = "Ward-Beck module front panels for plugin editors: anodised panel, silver trims, Elma-style coloured knob caps, push-buttons, LEDs, edgewise VU"
+publish = false
+
+[dependencies]
+nih_plug = { git = "https://github.com/robbert-vdh/nih-plug.git" }
+nih_plug_egui = { git = "https://github.com/robbert-vdh/nih-plug.git" }

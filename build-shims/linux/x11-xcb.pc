@@ -1,0 +1,10 @@
+prefix=/usr
+exec_prefix=${prefix}
+libdir=/usr/lib/x86_64-linux-gnu
+includedir=${prefix}/include
+
+Name: X11-XCB
+Description: X11 XCB C Binding Library
+Version: 1.8.7
+Cflags: -I${includedir}
+Libs: -L${libdir} -lX11-xcb -lX11 -lxcb

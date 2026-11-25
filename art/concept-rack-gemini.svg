@@ -1,0 +1,768 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1900 350" width="100%" height="100%">
+  <defs>
+    
+    <linearGradient id="rackGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#222528" />
+      <stop offset="8%" stop-color="#141618" />
+      <stop offset="92%" stop-color="#101214" />
+      <stop offset="100%" stop-color="#08090a" />
+    </linearGradient>
+
+    <linearGradient id="panelGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#383e44" />
+      <stop offset="6%" stop-color="#2c3136" />
+      <stop offset="94%" stop-color="#25292e" />
+      <stop offset="100%" stop-color="#1d2024" />
+    </linearGradient>
+
+    <linearGradient id="silverTrim" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="45%" stop-color="#d2d6da" />
+      <stop offset="55%" stop-color="#9ca2a8" />
+      <stop offset="100%" stop-color="#e4e7ea" />
+    </linearGradient>
+
+    
+    <radialGradient id="knobSkirt" cx="40%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#3b4046" />
+      <stop offset="70%" stop-color="#1b1e21" />
+      <stop offset="100%" stop-color="#0c0e10" />
+    </radialGradient>
+
+    <radialGradient id="capGreen" cx="35%" cy="30%" r="65%">
+      <stop offset="0%" stop-color="#34d07d" />
+      <stop offset="65%" stop-color="#169853" />
+      <stop offset="100%" stop-color="#0b5c31" />
+    </radialGradient>
+
+    <radialGradient id="capYellow" cx="35%" cy="30%" r="65%">
+      <stop offset="0%" stop-color="#ffea4d" />
+      <stop offset="65%" stop-color="#e5b800" />
+      <stop offset="100%" stop-color="#9c7a00" />
+    </radialGradient>
+
+    <radialGradient id="capRed" cx="35%" cy="30%" r="65%">
+      <stop offset="0%" stop-color="#ff664d" />
+      <stop offset="65%" stop-color="#d93218" />
+      <stop offset="100%" stop-color="#871908" />
+    </radialGradient>
+
+    <radialGradient id="capBlack" cx="35%" cy="30%" r="65%">
+      <stop offset="0%" stop-color="#484d54" />
+      <stop offset="65%" stop-color="#202327" />
+      <stop offset="100%" stop-color="#0e1012" />
+    </radialGradient>
+
+    <radialGradient id="capWhite" cx="35%" cy="30%" r="65%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="65%" stop-color="#dce0e4" />
+      <stop offset="100%" stop-color="#9da3a9" />
+    </radialGradient>
+
+    <radialGradient id="btnRed" cx="35%" cy="30%" r="65%">
+      <stop offset="0%" stop-color="#ff6a52" />
+      <stop offset="65%" stop-color="#df3318" />
+      <stop offset="100%" stop-color="#8b1907" />
+    </radialGradient>
+
+    <radialGradient id="btnWhite" cx="35%" cy="30%" r="65%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="65%" stop-color="#d5d9de" />
+      <stop offset="100%" stop-color="#8c9298" />
+    </radialGradient>
+
+    
+    <radialGradient id="ledRed" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#ff8a75" />
+      <stop offset="50%" stop-color="#d41e08" />
+      <stop offset="100%" stop-color="#5e0900" />
+    </radialGradient>
+
+    <radialGradient id="ledGreen" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#75ffad" />
+      <stop offset="50%" stop-color="#12a84e" />
+      <stop offset="100%" stop-color="#054a20" />
+    </radialGradient>
+
+    <radialGradient id="ledAmber" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#ffe875" />
+      <stop offset="50%" stop-color="#d99b00" />
+      <stop offset="100%" stop-color="#664700" />
+    </radialGradient>
+
+    
+    <linearGradient id="vuFace" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#d4bd7d" />
+      <stop offset="20%" stop-color="#f5e7b8" />
+      <stop offset="50%" stop-color="#fff4cf" />
+      <stop offset="85%" stop-color="#ebd79c" />
+      <stop offset="100%" stop-color="#bfa663" />
+    </linearGradient>
+
+    <linearGradient id="vuGlass" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.45" />
+      <stop offset="18%" stop-color="#ffffff" stop-opacity="0.12" />
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.0" />
+      <stop offset="88%" stop-color="#000000" stop-opacity="0.15" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.25" />
+    </linearGradient>
+
+    
+    <filter id="dropShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="2" dy="4" stdDeviation="3" flood-color="#000000" flood-opacity="0.65" />
+    </filter>
+    <filter id="btnShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="#000000" flood-opacity="0.7" />
+    </filter>
+
+    
+    <g id="thumbScrew">
+      <circle cx="0" cy="0" r="10.5" fill="#111315" stroke="#454b52" stroke-width="1" />
+      <circle cx="0" cy="0" r="7.5" fill="#2c3136" stroke="#687078" stroke-width="1.2" />
+      <line x1="-5" y1="0" x2="5" y2="0" stroke="#111315" stroke-width="1.8" />
+      <line x1="0" y1="-5" x2="0" y2="5" stroke="#111315" stroke-width="1.8" />
+    </g>
+
+    
+    <g id="largeKnobBase" filter="url(#dropShadow)">
+      <circle cx="0" cy="0" r="29" fill="url(#knobSkirt)" stroke="#090a0b" stroke-width="1.5" />
+      
+      <g stroke="#111315" stroke-width="2.2">
+        <line x1="0" y1="-29" x2="0" y2="-23" /><line x1="0" y1="23" x2="0" y2="29" />
+        <line x1="-29" y1="0" x2="-23" y2="0" /><line x1="23" y1="0" x2="29" y2="0" />
+        <line x1="-20.5" y1="-20.5" x2="-16.2" y2="-16.2" /><line x1="16.2" y1="16.2" x2="20.5" y2="20.5" />
+        <line x1="20.5" y1="-20.5" x2="16.2" y2="-16.2" /><line x1="-16.2" y1="16.2" x2="-20.5" y2="20.5" />
+        <line x1="-11" y1="-26.8" x2="-8.7" y2="-21.2" /><line x1="8.7" y1="21.2" x2="11" y2="26.8" />
+        <line x1="11" y1="-26.8" x2="8.7" y2="-21.2" /><line x1="-8.7" y1="21.2" x2="-11" y2="26.8" />
+        <line x1="-26.8" y1="-11" x2="-21.2" y2="-8.7" /><line x1="21.2" y1="8.7" x2="26.8" y2="11" />
+        <line x1="26.8" y1="-11" x2="21.2" y2="-8.7" /><line x1="-21.2" y1="8.7" x2="-26.8" y2="11" />
+      </g>
+      <circle cx="0" cy="0" r="23" fill="#181b1e" />
+    </g>
+
+    
+    <g id="smallKnobBase" filter="url(#dropShadow)">
+      <circle cx="0" cy="0" r="21" fill="url(#knobSkirt)" stroke="#090a0b" stroke-width="1.2" />
+      <g stroke="#111315" stroke-width="1.8">
+        <line x1="0" y1="-21" x2="0" y2="-16" /><line x1="0" y1="16" x2="0" y2="21" />
+        <line x1="-21" y1="0" x2="-16" y2="0" /><line x1="16" y1="0" x2="21" y2="0" />
+        <line x1="-14.8" y1="-14.8" x2="-11.3" y2="-11.3" /><line x1="11.3" y1="11.3" x2="14.8" y2="14.8" />
+        <line x1="14.8" y1="-14.8" x2="11.3" y2="-11.3" /><line x1="-11.3" y1="11.3" x2="-14.8" y2="14.8" />
+      </g>
+      <circle cx="0" cy="0" r="16.5" fill="#181b1e" />
+    </g>
+
+    
+    <g id="pushRedLarge" filter="url(#btnShadow)">
+      <circle cx="0" cy="0" r="19.5" fill="#111315" />
+      <circle cx="0" cy="0" r="17" fill="url(#btnRed)" stroke="#ff8b78" stroke-width="0.8" />
+    </g>
+    <g id="pushWhiteLarge" filter="url(#btnShadow)">
+      <circle cx="0" cy="0" r="19.5" fill="#111315" />
+      <circle cx="0" cy="0" r="17" fill="url(#btnWhite)" stroke="#ffffff" stroke-width="0.8" />
+    </g>
+    <g id="pushWhiteSmall" filter="url(#btnShadow)">
+      <circle cx="0" cy="0" r="14" fill="#111315" />
+      <circle cx="0" cy="0" r="11.8" fill="url(#btnWhite)" stroke="#ffffff" stroke-width="0.8" />
+    </g>
+  </defs>
+
+  <style>
+    .wbs-brand { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 800; fill: #eef1f4; letter-spacing: 0.8px; }
+    .lbl-main { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 700; fill: #e6eaee; letter-spacing: 0.5px; }
+    .lbl-sub  { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 600; fill: #dce1e6; letter-spacing: 0.2px; }
+    .lbl-tiny { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 600; fill: #cfd5db; }
+    .vu-txt   { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 700; fill: #2b2316; }
+    .vu-red   { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 800; fill: #b82914; }
+  </style>
+
+  
+  <rect x="0" y="0" width="1900" height="350" rx="4" fill="url(#rackGrad)" />
+  
+  <rect x="0" y="0" width="88" height="350" fill="#16181b" stroke="#2c3035" stroke-width="1" />
+  <rect x="1812" y="0" width="88" height="350" fill="#16181b" stroke="#2c3035" stroke-width="1" />
+  <line x1="88" y1="0" x2="88" y2="350" stroke="#08090a" stroke-width="3" />
+  <line x1="1812" y1="0" x2="1812" y2="350" stroke="#08090a" stroke-width="3" />
+
+  
+  <rect x="16" y="13" width="44" height="23" rx="11.5" fill="#ffffff" />
+  <rect x="16" y="314" width="44" height="23" rx="11.5" fill="#ffffff" />
+  <rect x="1840" y="13" width="44" height="23" rx="11.5" fill="#ffffff" />
+  <rect x="1840" y="314" width="44" height="23" rx="11.5" fill="#ffffff" />
+
+  
+  <rect x="88" y="8" width="1724" height="334" fill="#090a0c" />
+  
+  <rect x="896" y="8" width="112" height="334" fill="url(#rackGrad)" />
+  <line x1="896" y1="8" x2="896" y2="342" stroke="#2c3035" stroke-width="1" />
+  <line x1="1008" y1="8" x2="1008" y2="342" stroke="#2c3035" stroke-width="1" />
+
+  
+  
+  
+  <g id="module-m582c" transform="translate(194, 14)">
+    <rect x="0" y="0" width="702" height="159" fill="url(#panelGrad)" stroke="#111315" stroke-width="1" />
+    
+    <rect x="0" y="0" width="702" height="4.5" fill="url(#silverTrim)" />
+    <rect x="0" y="154.5" width="702" height="4.5" fill="url(#silverTrim)" />
+    
+    <use href="#thumbScrew" x="19" y="79.5" />
+
+    
+    <g stroke="#d5dbe0" stroke-width="1.3" fill="none">
+      
+      <line x1="90" y1="62" x2="90" y2="105" />
+      
+      <polyline points="175,112 238,112 238,65" />
+      
+      <polyline points="365,112 424,112 424,65" />
+      
+      <polyline points="555,112 616,112 616,65" />
+    </g>
+
+    
+    <text x="90" y="21" text-anchor="middle" font-size="13" class="lbl-main" transform="rotate(90, 90, 21)">EQ</text>
+    <use href="#pushRedLarge" x="90" y="45" />
+    <circle cx="90" cy="116" r="6" fill="url(#ledRed)" stroke="#141618" stroke-width="1.2" />
+
+    
+    <g transform="translate(143, 18)" stroke="#e6eaee" stroke-width="1.4" fill="none">
+      <path d="M -8,-8 C -2,-8 0,0 8,0" />
+      <path d="M -8,8 C -2,8 0,0 8,0" />
+    </g>
+    <use href="#pushWhiteSmall" x="143" y="45" />
+
+    
+    <g transform="translate(143, 112)">
+      
+      <g stroke="#d5dbe0" stroke-width="1.2">
+        <line x1="-24" y1="22" x2="-28" y2="26" /><line x1="-31" y1="9" x2="-36" y2="11" />
+        <line x1="-32" y1="-6" x2="-38" y2="-7" /><line x1="-26" y1="-19" x2="-31" y2="-23" />
+        <line x1="-14" y1="-29" x2="-17" y2="-34" /><line x1="0" y1="-32" x2="0" y2="-38" />
+        <line x1="14" y1="-29" x2="17" y2="-34" /><line x1="26" y1="-19" x2="31" y2="-23" />
+        <line x1="32" y1="-6" x2="38" y2="-7" /><line x1="31" y1="9" x2="36" y2="11" />
+        <line x1="24" y1="22" x2="28" y2="26" />
+      </g>
+      <text x="-34" y="34" font-size="10" class="lbl-tiny" transform="rotate(90, -34, 34)">15</text>
+      <text x="-43" y="13" font-size="10" class="lbl-tiny" transform="rotate(90, -43, 13)">10</text>
+      <text x="-43" y="-9" font-size="10" class="lbl-tiny" transform="rotate(90, -43, -9)">5</text>
+      <text x="-33" y="-29" font-size="10" class="lbl-tiny" transform="rotate(90, -33, -29)">0</text>
+      <text x="-17" y="-40" font-size="10" class="lbl-tiny" transform="rotate(90, -17, -40)">5</text>
+      <text x="2" y="-44" font-size="10" class="lbl-tiny" transform="rotate(90, 2, -44)">10</text>
+      <text x="21" y="-36" font-size="10" class="lbl-tiny" transform="rotate(90, 21, -36)">15</text>
+      <use href="#largeKnobBase" />
+      <circle cx="0" cy="0" r="21" fill="url(#capGreen)" />
+      <line x1="0" y1="-21" x2="0" y2="-5" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" transform="rotate(-135)" />
+    </g>
+    <text x="200" y="112" text-anchor="middle" font-size="13" class="lbl-main" transform="rotate(90, 200, 112)">LF</text>
+
+    
+    <g transform="translate(238, 45)">
+      <g stroke="#d5dbe0" stroke-width="1.2">
+        <line x1="-18" y1="15" x2="-22" y2="19" /><line x1="-22" y1="-5" x2="-27" y2="-6" />
+        <line x1="-11" y1="-21" x2="-14" y2="-26" /><line x1="11" y1="-21" x2="14" y2="-26" />
+        <line x1="22" y1="-5" x2="27" y2="-6" /><line x1="18" y1="15" x2="22" y2="19" />
+      </g>
+      <text x="-31" y="2" font-size="9.5" class="lbl-tiny" transform="rotate(90, -31, 2)">Hz</text>
+      <text x="-16" y="-31" font-size="9.5" class="lbl-tiny" transform="rotate(90, -16, -31)">25</text>
+      <text x="8" y="-33" font-size="9.5" class="lbl-tiny" transform="rotate(90, 8, -33)">40</text>
+      <text x="29" y="-12" font-size="9.5" class="lbl-tiny" transform="rotate(90, 29, -12)">140</text>
+      <text x="24" y="16" font-size="9.5" class="lbl-tiny" transform="rotate(90, 24, 16)">200</text>
+      <text x="8" y="31" font-size="9.5" class="lbl-tiny" transform="rotate(90, 8, 31)">400</text>
+      <use href="#smallKnobBase" />
+      <circle cx="0" cy="0" r="14.5" fill="url(#capGreen)" />
+      <line x1="0" y1="-14.5" x2="0" y2="-3" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" transform="rotate(-35)" />
+    </g>
+
+    
+    <text x="295" y="45" text-anchor="middle" font-size="12" class="lbl-main" transform="rotate(90, 295, 45)">Q</text>
+    <text x="315" y="19" text-anchor="middle" font-size="11" class="lbl-sub" transform="rotate(90, 315, 19)">H</text>
+    <text x="315" y="72" text-anchor="middle" font-size="11" class="lbl-sub" transform="rotate(90, 315, 72)">L</text>
+    <use href="#pushWhiteSmall" x="332" y="45" />
+
+    <g transform="translate(332, 112)">
+      <g stroke="#d5dbe0" stroke-width="1.2">
+        <line x1="-24" y1="22" x2="-28" y2="26" /><line x1="-31" y1="9" x2="-36" y2="11" />
+        <line x1="-32" y1="-6" x2="-38" y2="-7" /><line x1="-26" y1="-19" x2="-31" y2="-23" />
+        <line x1="-14" y1="-29" x2="-17" y2="-34" /><line x1="0" y1="-32" x2="0" y2="-38" />
+        <line x1="14" y1="-29" x2="17" y2="-34" /><line x1="26" y1="-19" x2="31" y2="-23" />
+        <line x1="32" y1="-6" x2="38" y2="-7" /><line x1="31" y1="9" x2="36" y2="11" />
+        <line x1="24" y1="22" x2="28" y2="26" />
+      </g>
+      <text x="-34" y="34" font-size="10" class="lbl-tiny" transform="rotate(90, -34, 34)">15</text>
+      <text x="-43" y="13" font-size="10" class="lbl-tiny" transform="rotate(90, -43, 13)">10</text>
+      <text x="-33" y="-29" font-size="10" class="lbl-tiny" transform="rotate(90, -33, -29)">0</text>
+      <text x="2" y="-44" font-size="10" class="lbl-tiny" transform="rotate(90, 2, -44)">10</text>
+      <text x="21" y="-36" font-size="10" class="lbl-tiny" transform="rotate(90, 21, -36)">15</text>
+      <use href="#largeKnobBase" />
+      <circle cx="0" cy="0" r="21" fill="url(#capYellow)" />
+      <line x1="0" y1="-21" x2="0" y2="-5" stroke="#181b1e" stroke-width="2.5" stroke-linecap="round" transform="rotate(-70)" />
+    </g>
+    <text x="388" y="112" text-anchor="middle" font-size="13" class="lbl-main" transform="rotate(90, 388, 112)">MF</text>
+
+    
+    <g transform="translate(424, 45)">
+      <g stroke="#d5dbe0" stroke-width="1.2">
+        <line x1="-18" y1="15" x2="-22" y2="19" /><line x1="-22" y1="-5" x2="-27" y2="-6" />
+        <line x1="-11" y1="-21" x2="-14" y2="-26" /><line x1="11" y1="-21" x2="14" y2="-26" />
+        <line x1="22" y1="-5" x2="27" y2="-6" /><line x1="18" y1="15" x2="22" y2="19" />
+      </g>
+      <text x="-32" y="2" font-size="9.5" class="lbl-tiny" transform="rotate(90, -32, 2)">KHz</text>
+      <text x="-18" y="-31" font-size="9.5" class="lbl-tiny" transform="rotate(90, -18, -31)">.4</text>
+      <text x="0" y="-35" font-size="9.5" class="lbl-tiny" transform="rotate(90, 0, -35)">.8</text>
+      <text x="19" y="-30" font-size="9.5" class="lbl-tiny" transform="rotate(90, 19, -30)">1.2</text>
+      <text x="31" y="-12" font-size="9.5" class="lbl-tiny" transform="rotate(90, 31, -12)">2.6</text>
+      <text x="31" y="8" font-size="9.5" class="lbl-tiny" transform="rotate(90, 31, 8)">3</text>
+      <text x="16" y="28" font-size="9.5" class="lbl-tiny" transform="rotate(90, 16, 28)">4</text>
+      <text x="-8" y="33" font-size="9.5" class="lbl-tiny" transform="rotate(90, -8, 33)">5.4</text>
+      <use href="#smallKnobBase" />
+      <circle cx="0" cy="0" r="14.5" fill="url(#capYellow)" />
+      <line x1="0" y1="-14.5" x2="0" y2="-3" stroke="#181b1e" stroke-width="2.2" stroke-linecap="round" transform="rotate(-110)" />
+    </g>
+
+    
+    <g transform="translate(520, 18)" stroke="#e6eaee" stroke-width="1.4" fill="none">
+      <path d="M -8,0 C 0,0 2,-8 8,-8" />
+      <path d="M -8,0 C 0,0 2,8 8,8" />
+    </g>
+    <use href="#pushWhiteSmall" x="520" y="45" />
+
+    
+    <g transform="translate(520, 112)">
+      <g stroke="#d5dbe0" stroke-width="1.2">
+        <line x1="-24" y1="22" x2="-28" y2="26" /><line x1="-31" y1="9" x2="-36" y2="11" />
+        <line x1="-32" y1="-6" x2="-38" y2="-7" /><line x1="-26" y1="-19" x2="-31" y2="-23" />
+        <line x1="-14" y1="-29" x2="-17" y2="-34" /><line x1="0" y1="-32" x2="0" y2="-38" />
+        <line x1="14" y1="-29" x2="17" y2="-34" /><line x1="26" y1="-19" x2="31" y2="-23" />
+        <line x1="32" y1="-6" x2="38" y2="-7" /><line x1="31" y1="9" x2="36" y2="11" />
+        <line x1="24" y1="22" x2="28" y2="26" />
+      </g>
+      <text x="-34" y="34" font-size="10" class="lbl-tiny" transform="rotate(90, -34, 34)">15</text>
+      <text x="-43" y="13" font-size="10" class="lbl-tiny" transform="rotate(90, -43, 13)">10</text>
+      <text x="-33" y="-29" font-size="10" class="lbl-tiny" transform="rotate(90, -33, -29)">0</text>
+      <text x="2" y="-44" font-size="10" class="lbl-tiny" transform="rotate(90, 2, -44)">10</text>
+      <text x="21" y="-36" font-size="10" class="lbl-tiny" transform="rotate(90, 21, -36)">15</text>
+      <use href="#largeKnobBase" />
+      <circle cx="0" cy="0" r="21" fill="url(#capRed)" />
+      <line x1="0" y1="-21" x2="0" y2="-5" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" transform="rotate(-70)" />
+    </g>
+    <text x="580" y="112" text-anchor="middle" font-size="13" class="lbl-main" transform="rotate(90, 580, 112)">HF</text>
+
+    
+    <g transform="translate(616, 45)">
+      <g stroke="#d5dbe0" stroke-width="1.2">
+        <line x1="-18" y1="15" x2="-22" y2="19" /><line x1="-22" y1="-5" x2="-27" y2="-6" />
+        <line x1="-11" y1="-21" x2="-14" y2="-26" /><line x1="11" y1="-21" x2="14" y2="-26" />
+        <line x1="22" y1="-5" x2="27" y2="-6" /><line x1="18" y1="15" x2="22" y2="19" />
+      </g>
+      <text x="-32" y="2" font-size="9.5" class="lbl-tiny" transform="rotate(90, -32, 2)">kHz</text>
+      <text x="-18" y="-31" font-size="9.5" class="lbl-tiny" transform="rotate(90, -18, -31)">1.6</text>
+      <text x="0" y="-35" font-size="9.5" class="lbl-tiny" transform="rotate(90, 0, -35)">2.4</text>
+      <text x="19" y="-30" font-size="9.5" class="lbl-tiny" transform="rotate(90, 19, -30)">4</text>
+      <text x="31" y="-12" font-size="9.5" class="lbl-tiny" transform="rotate(90, 31, -12)">8</text>
+      <text x="31" y="8" font-size="9.5" class="lbl-tiny" transform="rotate(90, 31, 8)">10</text>
+      <text x="16" y="28" font-size="9.5" class="lbl-tiny" transform="rotate(90, 16, 28)">12</text>
+      <text x="-8" y="33" font-size="9.5" class="lbl-tiny" transform="rotate(90, -8, 33)">24</text>
+      <use href="#smallKnobBase" />
+      <circle cx="0" cy="0" r="14.5" fill="url(#capRed)" />
+      <line x1="0" y1="-14.5" x2="0" y2="-3" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" transform="rotate(-110)" />
+    </g>
+
+    
+    <text x="684" y="34" text-anchor="middle" font-size="13" class="wbs-brand" transform="rotate(90, 684, 34)">WBS</text>
+    <text x="684" y="122" text-anchor="middle" font-size="12.5" class="lbl-main" transform="rotate(90, 684, 122)">M582C</text>
+  </g>
+
+  
+  
+  
+  <g id="module-m584" transform="translate(194, 177)">
+    <rect x="0" y="0" width="702" height="159" fill="url(#panelGrad)" stroke="#111315" stroke-width="1" />
+    <rect x="0" y="0" width="702" height="4.5" fill="url(#silverTrim)" />
+    <rect x="0" y="154.5" width="702" height="4.5" fill="url(#silverTrim)" />
+    <use href="#thumbScrew" x="19" y="79.5" />
+
+    
+    <g stroke="#d5dbe0" stroke-width="1.3" fill="none">
+      <line x1="145" y1="62" x2="145" y2="105" />
+      <line x1="440" y1="62" x2="440" y2="105" />
+    </g>
+
+    
+    <text x="145" y="21" text-anchor="middle" font-size="13" class="lbl-main" transform="rotate(90, 145, 21)">LF</text>
+    <use href="#pushRedLarge" x="145" y="45" />
+    <circle cx="145" cy="116" r="6" fill="url(#ledRed)" stroke="#141618" stroke-width="1.2" />
+
+    
+    <g transform="translate(238, 86)">
+      <g stroke="#d5dbe0" stroke-width="1.2">
+        <line x1="-26" y1="20" x2="-32" y2="25" /><line x1="-32" y1="6" x2="-39" y2="7" />
+        <line x1="-31" y1="-10" x2="-38" y2="-12" /><line x1="-23" y1="-23" x2="-28" y2="-29" />
+        <line x1="-10" y1="-31" x2="-12" y2="-38" /><line x1="6" y1="-32" x2="7" y2="-39" />
+        <line x1="20" y1="-26" x2="25" y2="-32" /><line x1="29" y1="-14" x2="36" y2="-17" />
+        <line x1="32" y1="0" x2="39" y2="0" /><line x1="29" y1="14" x2="36" y2="17" />
+        <line x1="20" y1="26" x2="25" y2="32" /><line x1="6" y1="32" x2="7" y2="39" />
+        <line x1="-10" y1="31" x2="-12" y2="38" />
+      </g>
+      <text x="-47" y="1" font-size="10.5" class="lbl-tiny" transform="rotate(90, -47, 1)">Hz</text>
+      <text x="-38" y="-23" font-size="10" class="lbl-tiny" transform="rotate(90, -38, -23)">27</text>
+      <text x="-22" y="-38" font-size="10" class="lbl-tiny" transform="rotate(90, -22, -38)">45</text>
+      <text x="-3" y="-44" font-size="10" class="lbl-tiny" transform="rotate(90, -3, -44)">70</text>
+      <text x="17" y="-41" font-size="10" class="lbl-tiny" transform="rotate(90, 17, -41)">100</text>
+      <text x="34" y="-28" font-size="10" class="lbl-tiny" transform="rotate(90, 34, -28)">150</text>
+      <text x="44" y="-8" font-size="10" class="lbl-tiny" transform="rotate(90, 44, -8)">220</text>
+      <text x="43" y="14" font-size="10" class="lbl-tiny" transform="rotate(90, 43, 14)">330</text>
+      <text x="31" y="34" font-size="10" class="lbl-tiny" transform="rotate(90, 31, 34)">500</text>
+      <text x="12" y="45" font-size="10" class="lbl-tiny" transform="rotate(90, 12, 45)">1k</text>
+      <text x="-9" y="45" font-size="10" class="lbl-tiny" transform="rotate(90, -9, 45)">2k</text>
+      <text x="-29" y="36" font-size="10" class="lbl-tiny" transform="rotate(90, -29, 36)">4k</text>
+      <use href="#largeKnobBase" />
+      <circle cx="0" cy="0" r="21" fill="url(#capGreen)" />
+      <line x1="0" y1="-21" x2="0" y2="-5" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" transform="rotate(95)" />
+    </g>
+
+    
+    <text x="440" y="21" text-anchor="middle" font-size="13" class="lbl-main" transform="rotate(90, 440, 21)">HF</text>
+    <use href="#pushRedLarge" x="440" y="45" />
+    <circle cx="440" cy="116" r="6" fill="url(#ledRed)" stroke="#141618" stroke-width="1.2" />
+
+    
+    <g transform="translate(538, 86)">
+      <g stroke="#d5dbe0" stroke-width="1.2">
+        <line x1="-26" y1="20" x2="-32" y2="25" /><line x1="-32" y1="6" x2="-39" y2="7" />
+        <line x1="-31" y1="-10" x2="-38" y2="-12" /><line x1="-23" y1="-23" x2="-28" y2="-29" />
+        <line x1="-10" y1="-31" x2="-12" y2="-38" /><line x1="6" y1="-32" x2="7" y2="-39" />
+        <line x1="20" y1="-26" x2="25" y2="-32" /><line x1="29" y1="-14" x2="36" y2="-17" />
+        <line x1="32" y1="0" x2="39" y2="0" /><line x1="29" y1="14" x2="36" y2="17" />
+        <line x1="20" y1="26" x2="25" y2="32" /><line x1="6" y1="32" x2="7" y2="39" />
+        <line x1="-10" y1="31" x2="-12" y2="38" />
+      </g>
+      <text x="-48" y="1" font-size="10.5" class="lbl-tiny" transform="rotate(90, -48, 1)">Hz</text>
+      <text x="-38" y="-23" font-size="10" class="lbl-tiny" transform="rotate(90, -38, -23)">500</text>
+      <text x="-22" y="-38" font-size="10" class="lbl-tiny" transform="rotate(90, -22, -38)">1k</text>
+      <text x="-3" y="-44" font-size="10" class="lbl-tiny" transform="rotate(90, -3, -44)">2k</text>
+      <text x="17" y="-41" font-size="10" class="lbl-tiny" transform="rotate(90, 17, -41)">3k</text>
+      <text x="34" y="-28" font-size="10" class="lbl-tiny" transform="rotate(90, 34, -28)">4k</text>
+      <text x="44" y="-8" font-size="10" class="lbl-tiny" transform="rotate(90, 44, -8)">5k</text>
+      <text x="43" y="14" font-size="10" class="lbl-tiny" transform="rotate(90, 43, 14)">6k</text>
+      <text x="31" y="34" font-size="10" class="lbl-tiny" transform="rotate(90, 31, 34)">8k</text>
+      <text x="12" y="45" font-size="10" class="lbl-tiny" transform="rotate(90, 12, 45)">10k</text>
+      <text x="-9" y="45" font-size="10" class="lbl-tiny" transform="rotate(90, -9, 45)">12k</text>
+      <text x="-29" y="36" font-size="10" class="lbl-tiny" transform="rotate(90, -29, 36)">15k</text>
+      <use href="#largeKnobBase" />
+      <circle cx="0" cy="0" r="21" fill="url(#capRed)" />
+      <line x1="0" y1="-21" x2="0" y2="-5" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" transform="rotate(55)" />
+    </g>
+
+    
+    <text x="684" y="34" text-anchor="middle" font-size="13" class="wbs-brand" transform="rotate(90, 684, 34)">WBS</text>
+    <text x="684" y="122" text-anchor="middle" font-size="12.5" class="lbl-main" transform="rotate(90, 684, 122)">M584</text>
+  </g>
+
+  
+  
+  
+  <g id="module-m456" transform="translate(1008, 14)">
+    <rect x="0" y="0" width="702" height="159" fill="url(#panelGrad)" stroke="#111315" stroke-width="1" />
+    <rect x="0" y="0" width="702" height="4.5" fill="url(#silverTrim)" />
+    <rect x="0" y="154.5" width="702" height="4.5" fill="url(#silverTrim)" />
+    <use href="#thumbScrew" x="19" y="79.5" />
+    <use href="#thumbScrew" x="683" y="79.5" />
+
+    
+    <text x="90" y="21" text-anchor="middle" font-size="12" class="lbl-main" transform="rotate(90, 90, 21)">INS</text>
+    <use href="#pushWhiteLarge" x="90" y="45" />
+
+    <text x="145" y="21" text-anchor="middle" font-size="12" class="lbl-main" transform="rotate(90, 145, 21)">COMP</text>
+    <use href="#pushRedLarge" x="145" y="45" />
+    <circle cx="177" cy="45" r="5.5" fill="url(#ledRed)" stroke="#141618" stroke-width="1.2" />
+
+    
+    <g transform="translate(177, 112)">
+      <g stroke="#d5dbe0" stroke-width="1.2">
+        <line x1="-18" y1="15" x2="-22" y2="19" /><line x1="-22" y1="-5" x2="-27" y2="-6" />
+        <line x1="-11" y1="-21" x2="-14" y2="-26" /><line x1="11" y1="-21" x2="14" y2="-26" />
+        <line x1="22" y1="-5" x2="27" y2="-6" /><line x1="18" y1="15" x2="22" y2="19" />
+      </g>
+      <text x="-31" y="2" font-size="9.5" class="lbl-tiny" transform="rotate(90, -31, 2)">RLS</text>
+      <text x="-15" y="-31" font-size="9.5" class="lbl-tiny" transform="rotate(90, -15, -31)">0.1</text>
+      <text x="10" y="-32" font-size="9.5" class="lbl-tiny" transform="rotate(90, 10, -32)">0.5</text>
+      <text x="29" y="-6" font-size="9.5" class="lbl-tiny" transform="rotate(90, 29, -6)">2</text>
+      <text x="18" y="24" font-size="9.5" class="lbl-tiny" transform="rotate(90, 18, 24)">5</text>
+      <use href="#smallKnobBase" />
+      <circle cx="0" cy="0" r="14.5" fill="url(#capGreen)" />
+      <line x1="0" y1="-14.5" x2="0" y2="-3" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" transform="rotate(-140)" />
+    </g>
+
+    
+    <g transform="translate(245, 45)">
+      <g stroke="#d5dbe0" stroke-width="1.2">
+        <line x1="-18" y1="15" x2="-22" y2="19" /><line x1="-22" y1="-5" x2="-27" y2="-6" />
+        <line x1="-11" y1="-21" x2="-14" y2="-26" /><line x1="11" y1="-21" x2="14" y2="-26" />
+        <line x1="22" y1="-5" x2="27" y2="-6" /><line x1="18" y1="15" x2="22" y2="19" />
+      </g>
+      <text x="-40" y="2" text-anchor="middle" font-size="9.5" class="lbl-main" transform="rotate(90, -40, 2)">COMP THLD</text>
+      <text x="-16" y="-31" font-size="9" class="lbl-tiny" transform="rotate(90, -16, -31)">-20</text>
+      <text x="5" y="-33" font-size="9" class="lbl-tiny" transform="rotate(90, 5, -33)">-16</text>
+      <text x="26" y="-16" font-size="9" class="lbl-tiny" transform="rotate(90, 26, -16)">-12</text>
+      <text x="27" y="10" font-size="9" class="lbl-tiny" transform="rotate(90, 27, 10)">-8</text>
+      <text x="12" y="29" font-size="9" class="lbl-tiny" transform="rotate(90, 12, 29)">-4</text>
+      <text x="-10" y="31" font-size="9" class="lbl-tiny" transform="rotate(90, -10, 31)">0</text>
+      <use href="#smallKnobBase" />
+      <circle cx="0" cy="0" r="14.5" fill="url(#capGreen)" />
+      <line x1="0" y1="-14.5" x2="0" y2="-3" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" transform="rotate(-70)" />
+    </g>
+
+    
+    <g transform="translate(285, 112)">
+      <g stroke="#d5dbe0" stroke-width="1.2">
+        <line x1="-18" y1="15" x2="-22" y2="19" /><line x1="-22" y1="-5" x2="-27" y2="-6" />
+        <line x1="-11" y1="-21" x2="-14" y2="-26" /><line x1="11" y1="-21" x2="14" y2="-26" />
+        <line x1="22" y1="-5" x2="27" y2="-6" /><line x1="18" y1="15" x2="22" y2="19" />
+      </g>
+      <text x="-38" y="2" text-anchor="middle" font-size="9.5" class="lbl-main" transform="rotate(90, -38, 2)">SLOPE</text>
+      <text x="-16" y="-31" font-size="9.5" class="lbl-tiny" transform="rotate(90, -16, -31)">10</text>
+      <text x="6" y="-33" font-size="9.5" class="lbl-tiny" transform="rotate(90, 6, -33)">5</text>
+      <text x="27" y="-12" font-size="9.5" class="lbl-tiny" transform="rotate(90, 27, -12)">3</text>
+      <text x="24" y="14" font-size="9.5" class="lbl-tiny" transform="rotate(90, 24, 14)">2</text>
+      <text x="6" y="31" font-size="9.5" class="lbl-tiny" transform="rotate(90, 6, 31)">1.5</text>
+      <use href="#smallKnobBase" />
+      <circle cx="0" cy="0" r="14.5" fill="url(#capGreen)" />
+      <line x1="0" y1="-14.5" x2="0" y2="-3" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" transform="rotate(-115)" />
+    </g>
+
+    
+    <text x="303" y="21" text-anchor="middle" font-size="10.5" class="lbl-main" transform="rotate(90, 303, 21)">GR</text>
+    <text x="303" y="72" text-anchor="middle" font-size="10.5" class="lbl-main" transform="rotate(90, 303, 72)">VU</text>
+    <use href="#pushWhiteSmall" x="328" y="45" />
+
+    <text x="378" y="21" text-anchor="middle" font-size="11" class="lbl-main" transform="rotate(90, 378, 21)">D S</text>
+    <use href="#pushWhiteSmall" x="378" y="45" />
+
+    
+    <g transform="translate(378, 112)">
+      <text x="-38" y="2" text-anchor="middle" font-size="9.5" class="lbl-main" transform="rotate(90, -38, 2)">DS-NG</text>
+      <text x="-12" y="-33" font-size="9" class="lbl-tiny" transform="rotate(90, -12, -33)">1kHz</text>
+      <text x="15" y="-30" font-size="9" class="lbl-tiny" transform="rotate(90, 15, -30)">8kHz</text>
+      <use href="#largeKnobBase" />
+      <circle cx="0" cy="0" r="21" fill="url(#capBlack)" />
+      <line x1="0" y1="-21" x2="0" y2="-5" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" transform="rotate(140)" />
+    </g>
+
+    
+    <text x="442" y="21" text-anchor="middle" font-size="12" class="lbl-main" transform="rotate(90, 442, 21)">LIM</text>
+    <use href="#pushRedLarge" x="442" y="45" />
+    <circle cx="476" cy="45" r="5.5" fill="url(#ledRed)" stroke="#141618" stroke-width="1.2" />
+
+    
+    <g transform="translate(486, 112)">
+      <g stroke="#d5dbe0" stroke-width="1.2">
+        <line x1="-18" y1="15" x2="-22" y2="19" /><line x1="-22" y1="-5" x2="-27" y2="-6" />
+        <line x1="-11" y1="-21" x2="-14" y2="-26" /><line x1="11" y1="-21" x2="14" y2="-26" />
+        <line x1="22" y1="-5" x2="27" y2="-6" /><line x1="18" y1="15" x2="22" y2="19" />
+      </g>
+      <text x="-31" y="2" font-size="9.5" class="lbl-tiny" transform="rotate(90, -31, 2)">RLS</text>
+      <text x="-15" y="-31" font-size="9.5" class="lbl-tiny" transform="rotate(90, -15, -31)">0.1</text>
+      <text x="10" y="-32" font-size="9.5" class="lbl-tiny" transform="rotate(90, 10, -32)">0.5</text>
+      <text x="29" y="-6" font-size="9.5" class="lbl-tiny" transform="rotate(90, 29, -6)">2</text>
+      <text x="18" y="24" font-size="9.5" class="lbl-tiny" transform="rotate(90, 18, 24)">5</text>
+      <use href="#smallKnobBase" />
+      <circle cx="0" cy="0" r="14.5" fill="url(#capYellow)" />
+      <line x1="0" y1="-14.5" x2="0" y2="-3" stroke="#181b1e" stroke-width="2.2" stroke-linecap="round" transform="rotate(-110)" />
+    </g>
+
+    
+    <g transform="translate(550, 45)">
+      <g stroke="#d5dbe0" stroke-width="1.2">
+        <line x1="-18" y1="15" x2="-22" y2="19" /><line x1="-22" y1="-5" x2="-27" y2="-6" />
+        <line x1="-11" y1="-21" x2="-14" y2="-26" /><line x1="11" y1="-21" x2="14" y2="-26" />
+        <line x1="22" y1="-5" x2="27" y2="-6" /><line x1="18" y1="15" x2="22" y2="19" />
+      </g>
+      <text x="-43" y="2" text-anchor="middle" font-size="9.5" class="lbl-main" transform="rotate(90, -43, 2)">LIMIT THLD</text>
+      <text x="-16" y="-31" font-size="9" class="lbl-tiny" transform="rotate(90, -16, -31)">0</text>
+      <text x="5" y="-33" font-size="9" class="lbl-tiny" transform="rotate(90, 5, -33)">4</text>
+      <text x="26" y="-16" font-size="9" class="lbl-tiny" transform="rotate(90, 26, -16)">8</text>
+      <text x="27" y="10" font-size="9" class="lbl-tiny" transform="rotate(90, 27, 10)">12</text>
+      <text x="12" y="29" font-size="9" class="lbl-tiny" transform="rotate(90, 12, 29)">16</text>
+      <text x="-10" y="31" font-size="9" class="lbl-tiny" transform="rotate(90, -10, 31)">+20</text>
+      <use href="#smallKnobBase" />
+      <circle cx="0" cy="0" r="14.5" fill="url(#capYellow)" />
+      <line x1="0" y1="-14.5" x2="0" y2="-3" stroke="#181b1e" stroke-width="2.2" stroke-linecap="round" transform="rotate(-110)" />
+    </g>
+
+    
+    <text x="615" y="21" text-anchor="middle" font-size="10" class="lbl-main" transform="rotate(90, 615, 21)">LIMIT</text>
+    <text x="633" y="14" font-size="9.5" class="lbl-tiny" transform="rotate(90, 633, 14)">6</text>
+    <circle cx="615" cy="40" r="6" fill="url(#ledGreen)" stroke="#141618" stroke-width="1.2" />
+    <text x="633" y="54" font-size="9.5" class="lbl-tiny" transform="rotate(90, 633, 54)">12</text>
+    <circle cx="615" cy="68" r="6" fill="url(#ledAmber)" stroke="#141618" stroke-width="1.2" />
+
+    
+    <g transform="translate(610, 112)">
+      <g stroke="#d5dbe0" stroke-width="1.2">
+        <line x1="-18" y1="15" x2="-22" y2="19" /><line x1="-22" y1="-5" x2="-27" y2="-6" />
+        <line x1="-11" y1="-21" x2="-14" y2="-26" /><line x1="11" y1="-21" x2="14" y2="-26" />
+        <line x1="22" y1="-5" x2="27" y2="-6" /><line x1="18" y1="15" x2="22" y2="19" />
+      </g>
+      <text x="-38" y="2" text-anchor="middle" font-size="9.5" class="lbl-main" transform="rotate(90, -38, 2)">SENS</text>
+      <text x="-16" y="-31" font-size="9" class="lbl-tiny" transform="rotate(90, -16, -31)">-8</text>
+      <text x="5" y="-33" font-size="9" class="lbl-tiny" transform="rotate(90, 5, -33)">-4</text>
+      <text x="27" y="-14" font-size="9" class="lbl-tiny" transform="rotate(90, 27, -14)">0</text>
+      <text x="24" y="14" font-size="9" class="lbl-tiny" transform="rotate(90, 24, 14)">+4</text>
+      <text x="6" y="31" font-size="9" class="lbl-tiny" transform="rotate(90, 6, 31)">+10</text>
+      <use href="#smallKnobBase" />
+      <circle cx="0" cy="0" r="14.5" fill="url(#capWhite)" />
+      <line x1="0" y1="-14.5" x2="0" y2="-3" stroke="#181b1e" stroke-width="2.2" stroke-linecap="round" transform="rotate(-110)" />
+    </g>
+
+    
+    <text x="684" y="34" text-anchor="middle" font-size="13" class="wbs-brand" transform="rotate(90, 684, 34)">WBS</text>
+    <text x="684" y="122" text-anchor="middle" font-size="12.5" class="lbl-main" transform="rotate(90, 684, 122)">M456</text>
+  </g>
+
+  
+  
+  
+  <g id="module-m407" transform="translate(1008, 177)">
+    <rect x="0" y="0" width="702" height="159" fill="url(#panelGrad)" stroke="#111315" stroke-width="1" />
+    <rect x="0" y="0" width="702" height="4.5" fill="url(#silverTrim)" />
+    <rect x="0" y="154.5" width="702" height="4.5" fill="url(#silverTrim)" />
+    <use href="#thumbScrew" x="19" y="79.5" />
+
+    
+    <text x="95" y="21" text-anchor="middle" font-size="13" class="lbl-main" transform="rotate(90, 95, 21)">NG</text>
+    <use href="#pushRedLarge" x="95" y="45" />
+
+    
+    <circle cx="95" cy="116" r="5.5" fill="url(#ledRed)" stroke="#141618" stroke-width="1.2" />
+    <g transform="translate(148, 112)">
+      <g stroke="#d5dbe0" stroke-width="1.2">
+        <line x1="-22" y1="20" x2="-27" y2="25" /><line x1="-29" y1="4" x2="-35" y2="5" />
+        <line x1="-27" y1="-13" x2="-33" y2="-16" /><line x1="-15" y1="-26" x2="-19" y2="-32" />
+        <line x1="2" y1="-30" x2="2" y2="-36" /><line x1="18" y1="-24" x2="22" y2="-29" />
+        <line x1="28" y1="-10" x2="34" y2="-12" /><line x1="28" y1="10" x2="34" y2="12" />
+      </g>
+      <text x="-40" y="2" text-anchor="middle" font-size="10" class="lbl-main" transform="rotate(90, -40, 2)">RLS</text>
+      <text x="-20" y="-36" font-size="9.5" class="lbl-tiny" transform="rotate(90, -20, -36)">0.1</text>
+      <text x="34" y="-6" font-size="9.5" class="lbl-tiny" transform="rotate(90, 34, -6)">1</text>
+      <text x="24" y="26" font-size="9.5" class="lbl-tiny" transform="rotate(90, 24, 26)">5</text>
+      <use href="#largeKnobBase" />
+      <circle cx="0" cy="0" r="21" fill="url(#capBlack)" />
+      <line x1="0" y1="-21" x2="0" y2="-5" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" transform="rotate(95)" />
+    </g>
+
+    
+    <g transform="translate(238, 45)">
+      <g stroke="#d5dbe0" stroke-width="1.2">
+        <line x1="-22" y1="20" x2="-27" y2="25" /><line x1="-29" y1="4" x2="-35" y2="5" />
+        <line x1="-27" y1="-13" x2="-33" y2="-16" /><line x1="-15" y1="-26" x2="-19" y2="-32" />
+        <line x1="2" y1="-30" x2="2" y2="-36" /><line x1="18" y1="-24" x2="22" y2="-29" />
+        <line x1="28" y1="-10" x2="34" y2="-12" /><line x1="28" y1="10" x2="34" y2="12" />
+      </g>
+      <text x="-40" y="2" text-anchor="middle" font-size="10" class="lbl-main" transform="rotate(90, -40, 2)">THLD</text>
+      <text x="-20" y="-36" font-size="9.5" class="lbl-tiny" transform="rotate(90, -20, -36)">-50</text>
+      <text x="24" y="26" font-size="9.5" class="lbl-tiny" transform="rotate(90, 24, 26)">0</text>
+      <use href="#largeKnobBase" />
+      <circle cx="0" cy="0" r="21" fill="url(#capBlack)" />
+      <line x1="0" y1="-21" x2="0" y2="-5" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" transform="rotate(55)" />
+    </g>
+
+    
+    <text x="330" y="21" text-anchor="middle" font-size="11" class="lbl-main" transform="rotate(90, 330, 21)">GATE</text>
+    <circle cx="330" cy="45" r="7" fill="url(#ledGreen)" stroke="#141618" stroke-width="1.4" />
+
+    
+    <g transform="translate(330, 112)">
+      <g stroke="#d5dbe0" stroke-width="1.2">
+        <line x1="-22" y1="20" x2="-27" y2="25" /><line x1="-29" y1="4" x2="-35" y2="5" />
+        <line x1="-27" y1="-13" x2="-33" y2="-16" /><line x1="-15" y1="-26" x2="-19" y2="-32" />
+        <line x1="2" y1="-30" x2="2" y2="-36" /><line x1="18" y1="-24" x2="22" y2="-29" />
+        <line x1="28" y1="-10" x2="34" y2="-12" /><line x1="28" y1="10" x2="34" y2="12" />
+      </g>
+      <text x="-40" y="2" text-anchor="middle" font-size="10" class="lbl-main" transform="rotate(90, -40, 2)">ATTEN</text>
+      <text x="-20" y="-36" font-size="9.5" class="lbl-tiny" transform="rotate(90, -20, -36)">50</text>
+      <text x="24" y="26" font-size="9.5" class="lbl-tiny" transform="rotate(90, 24, 26)">0</text>
+      <use href="#largeKnobBase" />
+      <circle cx="0" cy="0" r="21" fill="url(#capBlack)" />
+      <line x1="0" y1="-21" x2="0" y2="-5" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" transform="rotate(55)" />
+    </g>
+
+    
+    <g transform="translate(412, 112)" filter="url(#btnShadow)">
+      <circle cx="0" cy="0" r="11" fill="#16181b" stroke="#6c747c" stroke-width="1.5" />
+      <circle cx="0" cy="0" r="6.5" fill="#c8cfd6" />
+      <line x1="0" y1="0" x2="-7" y2="7" stroke="#eef2f6" stroke-width="4" stroke-linecap="round" />
+      <circle cx="-7" cy="7" r="3" fill="#ffffff" />
+    </g>
+
+    
+    <text x="580" y="112" text-anchor="middle" font-size="10.5" class="lbl-main" transform="rotate(90, 580, 112)">COMP</text>
+    <text x="564" y="112" text-anchor="middle" font-size="10.5" class="lbl-main" transform="rotate(90, 564, 112)">TIE</text>
+
+    <use href="#pushWhiteSmall" x="470" y="112" />
+    <text x="470" y="138" text-anchor="middle" font-size="9.5" class="lbl-tiny" transform="rotate(90, 470, 138)">OUT</text>
+
+    <use href="#pushWhiteSmall" x="505" y="112" />
+    <text x="505" y="138" text-anchor="middle" font-size="10" class="lbl-tiny" transform="rotate(90, 505, 138)">1</text>
+
+    <use href="#pushWhiteSmall" x="540" y="112" />
+    <text x="540" y="138" text-anchor="middle" font-size="10" class="lbl-tiny" transform="rotate(90, 540, 138)">2</text>
+
+    
+    
+    
+    <g id="wbs-edgewise-vu" transform="translate(396, 12)">
+      
+      <rect x="0" y="0" width="244" height="58" rx="4" fill="#111315" stroke="#5a626a" stroke-width="1.5" />
+      <rect x="4" y="4" width="236" height="50" rx="2" fill="#23272b" stroke="#8c949c" stroke-width="1" />
+      
+      <rect x="10" y="8" width="224" height="42" rx="1.5" fill="url(#vuFace)" />
+
+      
+      <line x1="26" y1="36" x2="155" y2="36" stroke="#2b2316" stroke-width="1.3" />
+      <rect x="155" y="33.5" width="58" height="4" fill="#c42b14" />
+
+      
+      <g stroke="#2b2316" stroke-width="1.2">
+        <line x1="28" y1="29" x2="28" y2="36" />   
+        <line x1="56" y1="29" x2="56" y2="36" />   
+        <line x1="80" y1="31" x2="80" y2="36" />   
+        <line x1="102" y1="29" x2="102" y2="36" /> 
+        <line x1="122" y1="31" x2="122" y2="36" /> 
+        <line x1="140" y1="31" x2="140" y2="36" /> 
+      </g>
+      <g stroke="#c42b14" stroke-width="1.4">
+        <line x1="155" y1="28" x2="155" y2="37" /> 
+        <line x1="175" y1="29" x2="175" y2="37" /> 
+        <line x1="194" y1="29" x2="194" y2="37" /> 
+        <line x1="212" y1="28" x2="212" y2="37" /> 
+      </g>
+
+      
+      <text x="28" y="21" text-anchor="middle" font-size="9.5" class="vu-txt" transform="rotate(90, 28, 21)">20</text>
+      <text x="56" y="21" text-anchor="middle" font-size="9.5" class="vu-txt" transform="rotate(90, 56, 21)">10</text>
+      <text x="80" y="21" text-anchor="middle" font-size="9.5" class="vu-txt" transform="rotate(90, 80, 21)">7</text>
+      <text x="102" y="21" text-anchor="middle" font-size="9.5" class="vu-txt" transform="rotate(90, 102, 21)">5</text>
+      <text x="122" y="21" text-anchor="middle" font-size="9.5" class="vu-txt" transform="rotate(90, 122, 21)">3</text>
+      <text x="140" y="21" text-anchor="middle" font-size="9.5" class="vu-txt" transform="rotate(90, 140, 21)">1</text>
+
+      <text x="155" y="21" text-anchor="middle" font-size="10" class="vu-red" transform="rotate(90, 155, 21)">0</text>
+      <text x="175" y="21" text-anchor="middle" font-size="9.5" class="vu-red" transform="rotate(90, 175, 21)">1</text>
+      <text x="194" y="21" text-anchor="middle" font-size="9.5" class="vu-red" transform="rotate(90, 194, 21)">2</text>
+      <text x="212" y="21" text-anchor="middle" font-size="9.5" class="vu-red" transform="rotate(90, 212, 21)">3</text>
+
+      <text x="132" y="44" text-anchor="middle" font-size="10" class="vu-txt" transform="rotate(90, 132, 44)">VU</text>
+      <text x="225" y="29" text-anchor="middle" font-size="8.5" class="vu-txt" transform="rotate(90, 225, 29)">WBS</text>
+
+      
+      <line x1="25" y1="10" x2="25" y2="48" stroke="#d4240e" stroke-width="2.2" stroke-linecap="round" />
+
+      
+      <rect x="10" y="8" width="224" height="42" rx="1.5" fill="url(#vuGlass)" />
+    </g>
+
+    
+    <text x="684" y="34" text-anchor="middle" font-size="13" class="wbs-brand" transform="rotate(90, 684, 34)">WBS</text>
+    <text x="684" y="122" text-anchor="middle" font-size="12.5" class="lbl-main" transform="rotate(90, 684, 122)">M407</text>
+  </g>
+</svg>

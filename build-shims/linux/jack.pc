@@ -1,0 +1,8 @@
+prefix=/usr
+libdir=/usr/lib/x86_64-linux-gnu
+includedir=${prefix}/include
+Name: jack
+Description: JACK runtime (shim for builds without libjack-dev)
+Version: 1.9.22
+Cflags:
+Libs: -L${libdir} -ljack
