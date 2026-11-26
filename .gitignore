@@ -1,2 +1,4 @@
 target/
 build-shims/linux/lib/
+# The private Pro Tools repo (WardBeckSystems/Ward-Beck-Pro-Tools: AAX / TDM / RTAS and the Avid SDKs) is checked out here
+Pro Tools/

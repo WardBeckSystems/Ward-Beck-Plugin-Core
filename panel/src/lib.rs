@@ -367,7 +367,9 @@ impl Face {
             let dy = ui.input(|i| i.raw_scroll_delta.y);
             if dy != 0.0 {
                 setter.begin_set_parameter(param);
-                let v = (param.unmodulated_normalized_value() + dy.signum() * 0.01).clamp(0.0, 1.0);
+                // a stepped switch moves one position per notch; a pot 1 %
+                let step = param.step_count().map_or(0.01, |n| 1.0 / n.max(1) as f32);
+                let v = (param.unmodulated_normalized_value() + dy.signum() * step).clamp(0.0, 1.0);
                 setter.set_parameter_normalized(param, v);
                 setter.end_set_parameter(param);
             }
