@@ -28,6 +28,13 @@ separately and are not public.
 and the CLAP into `…\Common Files\CLAP`, `/Library/Audio/Plug-Ins/CLAP` or `~/.clap`. The macOS builds are not
 notarised yet: if macOS blocks one, run `xattr -dr com.apple.quarantine` on it.
 
+### The earlier C++ suite
+
+The C++ CLAP suite that came first (`2030.env/vst` in WBSps.ca) is filed module by module too: each module repo's
+`SOFTWARE/cpp` holds that module's processor and editor (`vst/`), the DSP cores it uses (`dsp/`), its CLAP shell
+and parameter table (`shell/`), its panel layout, circuit diagram and panel art (`gui/`), its catalog entry
+(`<Mxxx>.json`) and build plan (`notes/`): [M402](https://github.com/WardBeckSystems/MODULES.FILTERS.M402/tree/main/SOFTWARE/cpp), [M404](https://github.com/WardBeckSystems/MODULES.FILTERS.M404/tree/main/SOFTWARE/cpp), [M405D](https://github.com/WardBeckSystems/MODULES.METER.M405D/tree/main/SOFTWARE/cpp), [M406](https://github.com/WardBeckSystems/MODULES.DYNAMICS.M406/tree/main/SOFTWARE/cpp), [M462A](https://github.com/WardBeckSystems/MODULES.FILTERS.M462A/tree/main/SOFTWARE/cpp), [M462B](https://github.com/WardBeckSystems/MODULES.FILTERS.M462B/tree/main/SOFTWARE/cpp), [M464](https://github.com/WardBeckSystems/MODULES.FILTERS.M464/tree/main/SOFTWARE/cpp), [M466](https://github.com/WardBeckSystems/MODULES.DYNAMICS.M466/tree/main/SOFTWARE/cpp), [M466M](https://github.com/WardBeckSystems/MODULES.DYNAMICS.M466M/tree/main/SOFTWARE/cpp), [M467](https://github.com/WardBeckSystems/MODULES.DYNAMICS.M467/tree/main/SOFTWARE/cpp), [M472](https://github.com/WardBeckSystems/MODULES.FILTERS.M472/tree/main/SOFTWARE/cpp), [M522B](https://github.com/WardBeckSystems/MODULES.FILTERS.M522B/tree/main/SOFTWARE/cpp), [M7880](https://github.com/WardBeckSystems/MODULES.COMMUNICATION.M7880/tree/main/SOFTWARE/cpp).
+
 ## Building
 
 ```bash
