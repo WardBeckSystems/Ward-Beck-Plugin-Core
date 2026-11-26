@@ -60,14 +60,47 @@ jobs:
           else
             cargo xtask bundle ${{ inputs.crate }} --release
           fi
+      - name: Standalone application
+        run: |
+          code=$(echo ${{ inputs.crate }} | sed 's/^wbs-//' | tr a-z A-Z)
+          app="WBS $code"
+          bin=${{ inputs.crate }}-standalone
+          mkdir -p target/standalone
+          if [ "$RUNNER_OS" = macOS ]; then
+            for t in x86_64-apple-darwin aarch64-apple-darwin; do cargo build --release --features standalone --bin $bin --target $t; done
+            mkdir -p "target/standalone/$app.app/Contents/MacOS"
+            lipo -create target/x86_64-apple-darwin/release/$bin target/aarch64-apple-darwin/release/$bin -output "target/standalone/$app.app/Contents/MacOS/$app"
+            cat > "target/standalone/$app.app/Contents/Info.plist" <<PLIST
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0"><dict>
+          <key>CFBundleExecutable</key><string>$app</string>
+          <key>CFBundleIdentifier</key><string>ca.ward-beck.$(echo $code | tr A-Z a-z).standalone</string>
+          <key>CFBundleName</key><string>$app</string>
+          <key>CFBundlePackageType</key><string>APPL</string>
+          <key>CFBundleShortVersionString</key><string>${GITHUB_REF_NAME#plugin-v}</string>
+          <key>NSMicrophoneUsageDescription</key><string>$app processes audio from your input.</string>
+          <key>NSHighResolutionCapable</key><true/>
+          </dict></plist>
+          PLIST
+          else
+            cargo build --release --features standalone --bin $bin
+            ext=$([ "$RUNNER_OS" = Windows ] && echo .exe || true)
+            cp "target/release/$bin$ext" "target/standalone/$app$ext"
+          fi
+          ls -la target/standalone
       - name: Zip
         run: |
-          cd target/bundled
+          curl -fsSL https://raw.githubusercontent.com/WardBeckSystems/Ward-Beck-Plugin-Core/main/LICENSE-PLUGINS.txt -o LICENSE.txt
+          z() {  # z <zip> <dir> <item>
+            if [ "$RUNNER_OS" = Windows ]; then (cd "$2" && 7z a -tzip "$1" "$3" >/dev/null) ; else (cd "$2" && zip -qry "$1" "$3"); fi
+            if [ "$RUNNER_OS" = Windows ]; then 7z a -tzip "$1" LICENSE.txt >/dev/null; else zip -qj "$1" LICENSE.txt; fi
+          }
+          here=$PWD
           for f in ${{ inputs.crate }}.vst3 ${{ inputs.crate }}.clap; do
-            ext=${f##*.}
-            out=../../${{ inputs.crate }}-${{ matrix.name }}-$ext.zip
-            if [ "$RUNNER_OS" = Windows ]; then 7z a -tzip "$out" "$f" >/dev/null; else zip -qry "$out" "$f"; fi
+            z "$here/${{ inputs.crate }}-${{ matrix.name }}-${f##*.}.zip" target/bundled "$f"
           done
+          z "$here/${{ inputs.crate }}-${{ matrix.name }}-standalone.zip" target/standalone .
       - uses: actions/upload-artifact@v4
         with:
           name: ${{ inputs.crate }}-${{ matrix.name }}
@@ -87,7 +120,7 @@ jobs:
           TAG: ${{ github.ref_type == 'tag' && github.ref_name || 'plugin-nightly' }}
         run: |
           ls -l dist
-          notes="Ward-Beck ${{ inputs.crate }}: VST3 and CLAP for Windows (x86_64), macOS (universal: Intel and Apple silicon) and Linux (x86_64).
+          notes="Ward-Beck ${{ inputs.crate }}: free, nothing locked (no licence key, no iLok, no activation). VST3, CLAP and a standalone application for Windows (x86_64), macOS (universal: Intel and Apple silicon) and Linux (x86_64).
           Unzip into your plug-in folder: VST3 → C:\\Program Files\\Common Files\\VST3, /Library/Audio/Plug-Ins/VST3, ~/.vst3; CLAP → …\\Common Files\\CLAP, /Library/Audio/Plug-Ins/CLAP, ~/.clap.
           macOS builds are not notarised yet: if macOS blocks the plug-in, run xattr -dr com.apple.quarantine on it.
           All Ward-Beck plugins: https://github.com/WardBeckSystems/Ward-Beck-Plugin-Core#plugins"

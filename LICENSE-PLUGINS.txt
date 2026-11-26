@@ -1,0 +1,14 @@
+Ward-Beck plugins: free
+
+Copyright (c) 2026 Ward-Beck Systems (Ward-Beck.com - Ward-Beck.ca). All rights reserved.
+
+The Ward-Beck module plugins (VST3, CLAP, AAX and the standalone applications) are free:
+
+  - Download, install and use them at no charge, on any number of computers, for personal or commercial work.
+  - Nothing is locked: no licence key, no iLok, no activation, no account, no internet connection.
+  - Share the unmodified downloads freely. Do not sell them.
+
+They are provided as they are, without warranty of any kind. Ward-Beck Systems is not liable for any damage
+arising from their use.
+
+The AAX plug-ins carry Avid's required digital signature only (PACE code signing, no copy protection).

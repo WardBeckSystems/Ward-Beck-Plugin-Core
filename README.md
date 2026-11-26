@@ -1,11 +1,12 @@
 # Ward-Beck Plugin Core
 
-Every Ward-Beck module plugin, and what they share. Each plugin lives in its own module repo
+Every Ward-Beck module plugin, and what they share. **The plugins are free**: no licence key, no iLok, no
+activation, nothing locked ([LICENSE-PLUGINS.txt](LICENSE-PLUGINS.txt)). Each plugin lives in its own module repo
 (`MODULES.<CATEGORY>.<Mxxx>`, folder `SOFTWARE/plugin`) and depends on this repo's panel kit.
 
 ## Plugins
 
-| Module | Plugin | Year | Source | Download (VST3 + CLAP: Windows, macOS, Linux) |
+| Module | Plugin | Year | Source | Download (VST3, CLAP and standalone: Windows, macOS, Linux) |
 |---|---|---|---|---|
 | M404 | Hi-Lo Pass Equalizer | 1968 | [MODULES.FILTERS.M404](https://github.com/WardBeckSystems/MODULES.FILTERS.M404/tree/main/SOFTWARE/plugin) | [releases](https://github.com/WardBeckSystems/MODULES.FILTERS.M404/releases/latest) |
 | M462 | Equalizer | 1974 | [MODULES.FILTERS.M462](https://github.com/WardBeckSystems/MODULES.FILTERS.M462/tree/main/SOFTWARE/plugin) | [releases](https://github.com/WardBeckSystems/MODULES.FILTERS.M462/releases/latest) |
@@ -20,9 +21,9 @@ Each plugin is one Rust crate: the module's signal path (`dsp`, also run by the
 laid out from the module's own drawings. Every panel carries the WBS logo bottom right (a link to
 [ward-beck.ca](https://ward-beck.ca)).
 
-**Formats.** VST3 and CLAP for Windows, macOS (universal) and Linux are public, in each module repo's releases.
-Pro Tools formats (AAX Native, AAX DSP, and TDM / RTAS for legacy Pro Tools 9 and 10 systems) are developed
-separately and are not public.
+**Formats.** VST3, CLAP and a standalone application for Windows, macOS (universal) and Linux, in each module
+repo's releases. AAX (Pro Tools) for Windows and macOS: [Ward-Beck AAX releases](https://github.com/WardBeckSystems/Ward-Beck-Plugin-Core/releases?q=aax).
+TDM / RTAS for legacy Pro Tools 9 and 10 HD systems are not built yet.
 
 **Install.** Unzip the VST3 into `C:\Program Files\Common Files\VST3`, `/Library/Audio/Plug-Ins/VST3` or `~/.vst3`,
 and the CLAP into `…\Common Files\CLAP`, `/Library/Audio/Plug-Ins/CLAP` or `~/.clap`. The macOS builds are not
