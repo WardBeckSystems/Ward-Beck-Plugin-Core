@@ -1,0 +1,99 @@
+# Copyright (c) 2026 Ward-Beck Systems (Ward-Beck.com - Ward-Beck.ca). All rights reserved.
+# Build one module plugin (VST3 + CLAP) on Windows, macOS and Linux and publish it as a GitHub Release of the
+# calling module repo. Called from each MODULES.<CAT>.<Mxxx> repo's .github/workflows/plugin.yml:
+#
+#   jobs:
+#     plugin:
+#       uses: WardBeckSystems/Ward-Beck-Plugin-Core/.github/workflows/plugin-release.yml@main
+#       with: { crate: wbs-m464 }
+#       permissions: { contents: write }
+name: plugin-release
+
+on:
+  workflow_call:
+    inputs:
+      crate:
+        description: the plugin crate, e.g. wbs-m464
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { os: ubuntu-22.04, name: linux-x86_64 }
+          - { os: windows-latest, name: windows-x86_64 }
+          - { os: macos-latest, name: macos-universal }
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: bash
+        working-directory: SOFTWARE/plugin
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+          sparse-checkout: SOFTWARE/plugin
+      - name: Linux libraries
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libasound2-dev libgl-dev libjack-dev libx11-xcb-dev libxcb1-dev libxcb-dri2-0-dev \
+            libxcb-icccm4-dev libxcursor-dev libxkbcommon-dev libxcb-shape0-dev libxcb-xfixes0-dev
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ runner.os == 'macOS' && 'x86_64-apple-darwin,aarch64-apple-darwin' || '' }}
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: SOFTWARE/plugin
+      - name: Test the DSP
+        run: cargo test --no-default-features   # not --locked: the lock was made against the local Plugin-Core (WBSps.ca override)
+      - name: Bundle
+        run: |
+          if [ "$RUNNER_OS" = macOS ]; then
+            cargo xtask bundle-universal ${{ inputs.crate }} --release
+          else
+            cargo xtask bundle ${{ inputs.crate }} --release
+          fi
+      - name: Zip
+        run: |
+          cd target/bundled
+          for f in ${{ inputs.crate }}.vst3 ${{ inputs.crate }}.clap; do
+            ext=${f##*.}
+            out=../../${{ inputs.crate }}-${{ matrix.name }}-$ext.zip
+            if [ "$RUNNER_OS" = Windows ]; then 7z a -tzip "$out" "$f" >/dev/null; else zip -qry "$out" "$f"; fi
+          done
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ inputs.crate }}-${{ matrix.name }}
+          path: SOFTWARE/plugin/*.zip
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: dist
+          merge-multiple: true
+      - name: Publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.ref_type == 'tag' && github.ref_name || 'plugin-nightly' }}
+        run: |
+          ls -l dist
+          notes="Ward-Beck ${{ inputs.crate }}: VST3 and CLAP for Windows (x86_64), macOS (universal: Intel and Apple silicon) and Linux (x86_64).
+          Unzip into your plug-in folder: VST3 → C:\\Program Files\\Common Files\\VST3, /Library/Audio/Plug-Ins/VST3, ~/.vst3; CLAP → …\\Common Files\\CLAP, /Library/Audio/Plug-Ins/CLAP, ~/.clap.
+          macOS builds are not notarised yet: if macOS blocks the plug-in, run xattr -dr com.apple.quarantine on it.
+          All Ward-Beck plugins: https://github.com/WardBeckSystems/Ward-Beck-Plugin-Core#plugins"
+          if gh release view "$TAG" -R "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            gh release upload "$TAG" dist/*.zip --clobber -R "$GITHUB_REPOSITORY"
+          else
+            gh release create "$TAG" dist/*.zip -R "$GITHUB_REPOSITORY" --title "${{ inputs.crate }} $TAG" --notes "$notes" \
+              $([ "$TAG" = plugin-nightly ] && echo --prerelease)
+          fi
