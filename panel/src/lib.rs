@@ -6,11 +6,28 @@
 //! the module stands upright as it does in the console: the WBS badge at the top, the lettering level.
 //! Everything is drawn with egui shapes (no images), so it is sharp at any size.
 
+mod logo;
+
 pub use nih_plug_egui;
 pub use nih_plug_egui::egui;
 use egui::epaint::{Mesh, Vertex, WHITE_UV};
 use egui::{Align2, Color32, FontId, Painter, Pos2, Rect, Response, Sense, Stroke, Ui, Vec2};
 use nih_plug::prelude::{BoolParam, Param, ParamSetter};
+
+/// Where the WBS logo on every panel leads.
+pub const WARD_BECK_URL: &str = "https://ward-beck.ca";
+
+/// Opens `url` in the default browser (detached; errors ignored).
+pub fn open_url(url: &str) {
+    use std::process::Command;
+    #[cfg(target_os = "windows")]
+    let r = Command::new("cmd").args(["/C", "start", "", url]).spawn();
+    #[cfg(target_os = "macos")]
+    let r = Command::new("open").arg(url).spawn();
+    #[cfg(not(any(target_os = "windows", target_os = "macos")))]
+    let r = Command::new("xdg-open").arg(url).spawn();
+    let _ = r;
+}
 
 /// Panel width across the module in drawing units.
 pub const WIDTH: f32 = 159.0;
@@ -215,6 +232,44 @@ impl Face {
         self.screw(p, self.len - 19.0, mid);
         self.text(p, self.len - 18.0, self.width * 0.29, "WBS", 13.0, ink::BRAND);
         self.text(p, self.len - 18.0, self.width * 0.71, badge, 12.5, ink::LABEL);
+        self.wbs_logo(p);
+    }
+
+    /// The Ward-Beck Systems logo in the bottom-right corner, beside the bottom thumb screw; a click opens
+    /// ward-beck.ca in the browser.
+    pub fn wbs_logo(&self, p: &Painter) {
+        let r = self.rect();
+        let w = self.s(54.0);
+        let k = w / logo::W;
+        let min = Pos2::new(r.right() - self.s(10.0) - w, r.bottom() - self.s(9.0) - logo::H * k);
+        let area = Rect::from_min_size(min, Vec2::new(w, logo::H * k));
+        let ctx = p.ctx();
+        let (pos, clicked) = ctx.input(|i| (i.pointer.hover_pos(), i.pointer.primary_clicked()));
+        let hot = pos.is_some_and(|q| area.expand(self.s(2.0)).contains(q));
+        if hot {
+            ctx.set_cursor_icon(egui::CursorIcon::PointingHand);
+            if clicked {
+                open_url(WARD_BECK_URL);
+            }
+        }
+        let col = if hot { Color32::WHITE } else { ink::BRAND };
+        let at = |(x, y): (f32, f32)| Pos2::new(min.x + x * k, min.y + y * k);
+        // the frame: a strip between its inner and outer outline
+        let mut mesh = Mesh::default();
+        for (a, b) in logo::INNER.iter().zip(logo::OUTER) {
+            mesh.vertices.push(Vertex { pos: at(*a), uv: WHITE_UV, color: col });
+            mesh.vertices.push(Vertex { pos: at(*b), uv: WHITE_UV, color: col });
+        }
+        let n = logo::INNER.len() as u32;
+        for i in 0..n {
+            let j = (i + 1) % n;
+            mesh.add_triangle(2 * i, 2 * i + 1, 2 * j);
+            mesh.add_triangle(2 * j, 2 * i + 1, 2 * j + 1);
+        }
+        p.add(egui::Shape::mesh(mesh));
+        for poly in logo::LETTERS {
+            p.add(egui::Shape::convex_polygon(poly.iter().map(|q| at(*q)).collect(), col, Stroke::NONE));
+        }
     }
 
     pub fn screw(&self, p: &Painter, x: f32, y: f32) {
